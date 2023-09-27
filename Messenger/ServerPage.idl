@@ -1,0 +1,8 @@
+namespace Messenger
+{
+    [default_interface]
+    runtimeclass ServerPage : Microsoft.UI.Xaml.Controls.Page
+    {
+        ServerPage();
+    }
+}
