@@ -1,19 +1,83 @@
-﻿<Page x:Class="Messenger.ServerPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      mc:Ignorable="d">
+﻿<Page
+    x:Class="Messenger.ServerPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="using:Messenger"
+    mc:Ignorable="d">
     <ScrollViewer Margin="16">
         <StackPanel Spacing="32">
-            <Button Content="HELLO"
+            <Button Click="BackButton_Click"
                     HorizontalAlignment="Stretch"
-                    x:Name="myButton"
-                    Click="myButton_Click" />
-            <Button Content="HELLO"
+                    x:Name="BackButton">
+                Back
+            </Button>
+            <Button Click="ServerMenuButton_Click"
                     HorizontalAlignment="Stretch"
-                    x:Name="myButton2"
-                    Click="myButton2_Click" />
+                    x:Name="ServerMenuButton">
+                <Button.Flyout>
+                    <Flyout x:Name="ServerMenuFlyout">
+                        <StackPanel Margin="16"
+                                    Spacing="32">
+                            <TextBox HorizontalAlignment="Stretch"
+                                     MaxLength="5"
+                                     PlaceholderText="Port"
+                                     x:Name="ServerPortTextBox" />
+                            <Button Click="StartServerButton_Click"
+                                    HorizontalAlignment="Stretch"
+                                    x:Name="StartServerButton">
+                                Start
+                            </Button>
+                        </StackPanel>
+                    </Flyout>
+                </Button.Flyout>
+                Server menu
+            </Button>
+            <Button Click="AddVLANButton_Click"
+                    HorizontalAlignment="Stretch"
+                    x:Name="AddVLANButton">
+                Add VLAN
+            </Button>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Margin="9.6"
+                           Style="{StaticResource SubtitleTextBlockStyle}"
+                           Text="client" />
+
+                <ListBox x:Name="clientListBox"
+                         Grid.Row="1"
+                         Margin="9.6"
+                         ItemsSource="{x:Bind ClientNetworkActionViewModel.NetworkActions}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate x:DataType="local:NetworkAction">
+                            <TextBlock Text="{x:Bind Title}" TextWrapping="Wrap" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <TextBlock Grid.Column="1"
+                           Margin="9.6"
+                           Style="{StaticResource SubtitleTextBlockStyle}"
+                           Text="server" />
+                <ListBox x:Name="serverListBox"
+                         Grid.Column="1"
+                         Grid.Row="1"
+                         Margin="9.6"
+                         ItemsSource="{x:Bind ServerNetworkActionViewModel.NetworkActions}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate x:DataType="local:NetworkAction">
+                            <TextBlock Text="{x:Bind Title}" TextWrapping="Wrap" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
         </StackPanel>
     </ScrollViewer>
 </Page>

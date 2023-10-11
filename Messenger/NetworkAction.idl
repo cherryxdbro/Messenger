@@ -1,0 +1,9 @@
+namespace Messenger
+{
+    [default_interface]
+    runtimeclass NetworkAction : Windows.UI.Xaml.Data.INotifyPropertyChanged
+    {
+        NetworkAction(String title);
+        String Title;
+    }
+}

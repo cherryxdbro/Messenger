@@ -1,25 +1,23 @@
 ﻿#include "pch.h"
 
-#include "App.xaml.h"
-#include "MainPage.xaml.h"
+#include "App.h"
 
 using namespace winrt;
 using namespace Windows::ApplicationModel;
 using namespace Windows::ApplicationModel::Activation;
 using namespace Windows::Foundation;
-using namespace Microsoft::UI::Xaml;
-using namespace Microsoft::UI::Xaml::Controls;
-using namespace Microsoft::UI::Xaml::Navigation;
+using namespace Windows::UI::Xaml;
+using namespace Windows::UI::Xaml::Controls;
+using namespace Windows::UI::Xaml::Navigation;
 using namespace Messenger;
 using namespace Messenger::implementation;
 
 /// <summary>
-/// Initializes the singleton application object.  This is the first line of authored code
+/// Creates the singleton application object.  This is the first line of authored code
 /// executed, and as such is the logical equivalent of main() or WinMain().
 /// </summary>
 App::App()
 {
-    InitializeComponent();
     Suspending({ this, &App::OnSuspending });
 
 #if defined _DEBUG && !defined DISABLE_XAML_GENERATED_BREAK_ON_UNHANDLED_EXCEPTION
@@ -39,7 +37,7 @@ App::App()
 /// will be used such as when the application is launched to open a specific file.
 /// </summary>
 /// <param name="e">Details about the launch request and process.</param>
-void App::OnLaunched(Microsoft::UI::Xaml::LaunchActivatedEventArgs const& e)
+void App::OnLaunched(LaunchActivatedEventArgs const& e)
 {
     Frame rootFrame{ nullptr };
     auto content = Window::Current().Content();
@@ -58,13 +56,13 @@ void App::OnLaunched(Microsoft::UI::Xaml::LaunchActivatedEventArgs const& e)
 
         rootFrame.NavigationFailed({ this, &App::OnNavigationFailed });
 
-        if (e.UWPLaunchActivatedEventArgs().PreviousExecutionState() == ApplicationExecutionState::Terminated)
+        if (e.PreviousExecutionState() == ApplicationExecutionState::Terminated)
         {
             // Restore the saved session state only when appropriate, scheduling the
             // final launch steps after the restore is complete
         }
 
-        if (e.UWPLaunchActivatedEventArgs().PrelaunchActivated() == false)
+        if (e.PrelaunchActivated() == false)
         {
             if (rootFrame.Content() == nullptr)
             {
@@ -81,7 +79,7 @@ void App::OnLaunched(Microsoft::UI::Xaml::LaunchActivatedEventArgs const& e)
     }
     else
     {
-        if (e.UWPLaunchActivatedEventArgs().PrelaunchActivated() == false)
+        if (e.PrelaunchActivated() == false)
         {
             if (rootFrame.Content() == nullptr)
             {

@@ -4,19 +4,46 @@
     <ApplicationDefinition Include="App.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="MainPage.xaml" />
-    <Page Include="ServerPage.xaml" />
+    <Page Include="ServerPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
+    <Page Include="ClientPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />
     <Midl Include="MainPage.idl" />
+    <Midl Include="NetworkAction.idl">
+      <Filter>Resources\Data</Filter>
+    </Midl>
+    <Midl Include="NetworkActionViewModel.idl">
+      <Filter>Resources\Data</Filter>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
+    <ClCompile Include="App.cpp" />
+    <ClCompile Include="MainPage.cpp" />
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+    <ClCompile Include="NetworkAction.cpp">
+      <Filter>Resources\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Generated Files\NetworkActionViewModel.cpp">
+      <Filter>Resources\Data</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
+    <ClInclude Include="NetworkAction.h">
+      <Filter>Resources\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Generated Files\NetworkActionViewModel.h">
+      <Filter>Resources\Data</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Wide310x150Logo.scale-200.png">
@@ -48,8 +75,21 @@
     <Filter Include="Assets">
       <UniqueIdentifier>{e48dc53e-40b1-40cb-970a-f89935452892}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pages">
+      <UniqueIdentifier>{61e31725-7e2f-4ee4-88d2-b140ea8814a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{652e3791-340c-4da8-84e7-095ef8f4d465}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Data">
+      <UniqueIdentifier>{8c0d0aaf-a7b5-445f-93a5-c1b894b5b713}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <None Include="PropertySheet.props" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="readme.txt" />
   </ItemGroup>
 </Project>

@@ -1,8 +1,12 @@
+import "NetworkActionViewModel.idl";
+
 namespace Messenger
 {
     [default_interface]
-    runtimeclass ServerPage : Microsoft.UI.Xaml.Controls.Page
+    runtimeclass ServerPage : Windows.UI.Xaml.Controls.Page
     {
         ServerPage();
+        NetworkActionViewModel ClientNetworkActionViewModel { get; };
+        NetworkActionViewModel ServerNetworkActionViewModel { get; };
     }
 }

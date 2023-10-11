@@ -1,0 +1,8 @@
+namespace Messenger
+{
+    [default_interface]
+    runtimeclass ClientPage : Windows.UI.Xaml.Controls.Page
+    {
+        ClientPage();
+    }
+}

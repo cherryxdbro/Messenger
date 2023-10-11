@@ -1,0 +1,11 @@
+import "NetworkAction.idl";
+
+namespace Messenger
+{
+    [default_interface]
+    runtimeclass NetworkActionViewModel
+    {
+        NetworkActionViewModel();
+        Windows.Foundation.Collections.IObservableVector<NetworkAction> NetworkActions { get; };
+    }
+}
